@@ -32,7 +32,7 @@ class CheckoutSystemTest extends FreeSpec with Matchers {
     }
 
     "should give a total of 1050 Naira for input 'Apple, Apple, Orange, Apple' " in {
-      CheckoutSystem.getTotal("Apple Apple Orange Apple ") should be(1050)
+      CheckoutSystem.getTotal("Apple Apple Orange Apple") should be(1050)
     }
 
     "should throw exception if invalid input is entered" in {
