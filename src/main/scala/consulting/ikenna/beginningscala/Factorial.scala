@@ -1,14 +1,15 @@
 package consulting.ikenna.beginningscala
-
+import scala.annotation.tailrec
 
 
 object Factorial {
-  def nonTailRecursiveFactorial(n: Int): Int =  if (n == 0 | n ==1) 1 else n * nonTailRecursiveFactorial(n-1)
-  def tailRecursiveFactorial(n: Int): Int =  {
-    def innerRecursive(n: Int, prev: Int, acc: Int): Int = {
-      if (n == 0) acc else innerRecursive(n-1, acc, acc + prev)
-          }
-       return innerRecursive(n, 1, 0)
-      }
+  def nonTailRecursiveFactorial(n: Int): Int =  if (n < 2) n else n * nonTailRecursiveFactorial(n-1)
+  def tailRecursiveFactorial(n: Int): Int = {
+    @tailrec
+    def factorialAcc(acc: Int, n: Int): Int = {
+      if (n <= 1) acc
+      else factorialAcc(n * acc, n - 1)
+    }
+    factorialAcc(1, n)
   }
-
+}
